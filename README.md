@@ -10,6 +10,11 @@ The goal is to understand how attackers move through Windows domains using real-
 - Windows Server (Domain Controller)
 - Windows 10 (Client Machine)
 
-## Project Status
+## Lab Progress
 
-🚧 Lab setup in progress...
+- Virtual lab environment created
+- Domain controller configured
+- Active Directory installed
+- Domain users created
+- Windows client joined to domain
+- Initial network reconnaissance performed using Nmap
