@@ -2,52 +2,26 @@
 
 [wip]
 
-## Objective
+# Do it Yourself
 
-This project simulates a corporate Active Directory environment in a controlled lab setting in order to understand how enterprise networks are configured and how attackers may interact with them during a red team engagement.
+## Steps - Part 1
 
-## Skills Learned
+### *Setting up the virtual environment*
 
-- Virtual machine deployment using VirtualBox
-- Windows Server installation and initial configuration
-- Active Directory Domain Services setup
-- Domain creation and user management
-- Basic lab network preparation
+The lab environment was built using Oracle VM VirtualBox. The software was downloaded from the official website and installed using the default configuration, providing the base required to run multiple virtual machines simultaneously.
 
-## Tools Used
+### *Preparing the Windows 10 machine*
 
-- Oracle VM VirtualBox
-- Kali Linux
-- Windows Server 2022
-- Active Directory Domain Services
+The Windows 10 installation media was obtained through Microsoft’s official website using the Media Creation Tool. After generating the ISO file, a new virtual machine was created in VirtualBox. The machine was configured with appropriate resources, including memory, CPU allocation, and disk space. The ISO was mounted, and the operating system was installed by following the standard installation process.
 
-# Steps
+### *Setting up the attacker machine (Kali Linux)*
 
-## Part 1
+A Kali Linux virtual machine was downloaded in its pre-configured VirtualBox format. The file was extracted and imported into VirtualBox, allowing the machine to be quickly deployed. This system will serve as the attacker machine for all future testing and simulation within the lab.
 
-### *Prepare the lab environment*
+### *Preparing the Windows Server machine*
 
-A dedicated lab environment was prepared using VirtualBox in order to isolate the machines used throughout the project.
+The Windows Server 2022 ISO was downloaded from Microsoft’s evaluation center. A dedicated virtual machine was created and configured similarly to the other systems. During installation, the desktop experience version was selected to simplify interaction. Basic configuration was completed, including setting the administrator credentials.
 
-### *Create the domain controller*
+### *Part 1 - Summary*
 
-A Windows Server virtual machine was created and configured to act as the domain controller for the lab.
-
-### *Install Active Directory Domain Services*
-
-Active Directory Domain Services was installed on the Windows Server machine in order to create a functional enterprise-style domain environment.
-
-### *Create the domain*
-
-A new domain named `corp.local` was created and configured on the server.
-
-### *Create domain users*
-
-Several users were created in Active Directory to simulate a realistic corporate environment and prepare the lab for future enumeration and attack scenarios.
-
-## Next Steps
-
-- Configure the Windows 10 client machine
-- Join the client machine to the domain
-- Validate network communication between lab systems
-- Begin reconnaissance and enumeration from Kali Linux
+At this point, the lab environment has been successfully initialized. The setup includes a Windows Server machine, a Windows 10 client machine, and a Kali Linux attacker machine. All systems are installed and operational, forming the foundation for the next stages of configuration and security testing.
