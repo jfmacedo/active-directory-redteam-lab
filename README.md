@@ -31,28 +31,32 @@ At this stage, the lab environment consists of three fully operational virtual m
 
 ### *Configuring network settings*
 
-After installing all virtual machines, network settings were adjusted to allow communication between systems. Each machine was configured within VirtualBox to use a Host-Only Adapter, creating an isolated internal network for the lab.
+After preparing all virtual machines, network settings were configured to allow communication between systems. Each machine was connected using a Host-Only Adapter in VirtualBox, creating an isolated internal network for the lab environment.
 
-Manual IP configuration was applied to ensure consistent communication between machines. The same IPv4 network range was used across the systems to allow proper connectivity.
+To ensure stable and predictable communication, static IP addressing was applied across all machines. The domain controller (DC01) was assigned the IP address 192.168.56.10, the Windows 10 (Win10-Client) client machine was configured with 192.168.56.20, and the Kali Linux attacker machine was assigned 192.168.56.30. All systems operated within the same subnet (255.255.255.0).
 
-Connectivity tests were performed to verify that the machines could successfully reach each other within the network.
+The DNS configuration on the client machines was set to point to the domain controller, allowing proper name resolution within the domain environment.
+
+Connectivity between machines was tested to confirm that the network configuration was functioning correctly.
+
+### *Installing Active Directory Domain Services*
+
+The Windows Server machine (DC01) was prepared to act as the domain controller by installing the Active Directory Domain Services role through the Server Manager using the "Add Roles and Features" option.
+
+This step enabled the necessary services required to manage domain-based authentication and directory structures.
 
 ### *Promoting the server to domain controller*
 
-The Windows Server machine (DC01) was configured as the domain controller by installing Active Directory Domain Services.
+Following the installation of the Active Directory role, the server was promoted to a domain controller. During this process, a new domain named `corp.local` was created, establishing the central identity and authentication system for the lab.
 
-During the setup process, a new domain named `corp.local` was created, establishing the central identity and authentication system for the lab.
+The promotion process was completed successfully, and the domain services were verified to ensure proper operation.
 
-The server was promoted successfully, and domain services were verified to ensure proper functionality.
+### *Configuring Active Directory and users*
 
-### *Creating domain users*
+With Active Directory in place, user accounts were created to simulate a basic enterprise environment. These accounts will be used in later stages for authentication testing, enumeration, and privilege-related activities.
 
-User accounts were created within Active Directory to simulate a real-world corporate environment. These accounts will be used in later stages for authentication, enumeration, and attack scenarios.
-
-### *Preparing domain authentication*
-
-A test user account was created and prepared for domain authentication. This account will be used when connecting client machines to the domain and validating login functionality.
+A test user account was also prepared to validate domain authentication from client machines.
 
 ### *Part 2 - Summary*
 
-At this stage, the virtual network has been successfully configured and the domain controller is fully operational. Active Directory is running, users have been created, and the lab environment is now ready for client integration and further security testing.
+At this stage, the internal network has been fully configured, and all machines are successfully connected. Active Directory Domain Services have been installed, the server has been promoted to a domain controller, and the `corp.local` domain is operational. User accounts have been created, and the environment is now ready for client integration and further security testing.
