@@ -8,23 +8,24 @@
 
 ### *Setting up the virtual environment*
 
-The lab environment was built using Oracle VM VirtualBox. The software was downloaded from the official website and installed using the default configuration, providing the base required to run multiple virtual machines simultaneously.
-
-### *Preparing the Windows 10 machine*
-
-The Windows 10 installation media was obtained through Microsoft’s official website using the Media Creation Tool. After generating the ISO file, a new virtual machine was created in VirtualBox. The machine was configured with appropriate resources, including memory, CPU allocation, and disk space. The ISO was mounted, and the operating system was installed by following the standard installation process.
-
-### *Setting up the attacker machine (Kali Linux)*
-
-A Kali Linux virtual machine was downloaded in its pre-configured VirtualBox format. The file was extracted and imported into VirtualBox, allowing the machine to be quickly deployed. This system will serve as the attacker machine for all future testing and simulation within the lab.
+The lab environment was built using Oracle VM VirtualBox, which was installed using the default configuration. This setup provides the foundation required to run multiple virtual machines simultaneously within an isolated environment.
 
 ### *Preparing the Windows Server machine*
 
-The Windows Server 2022 ISO was downloaded from Microsoft’s evaluation center. A dedicated virtual machine was created and configured similarly to the other systems. During installation, the desktop experience version was selected to simplify interaction. Basic configuration was completed, including setting the administrator credentials.
+The Windows Server 2022 ISO was downloaded from Microsoft’s evaluation center and used to create a dedicated virtual machine that acts as the domain controller (DC01). The system was configured with 4GB of RAM, 2 CPUs, and a 50GB virtual disk. During installation, the Desktop Experience version was selected to simplify interaction with the system. Initial configuration was completed, including setting the administrator credentials.
+
+### *Preparing the Windows 10 machine*
+
+The Windows 10 installation media was obtained through Microsoft’s official website using the Media Creation Tool. After generating the ISO file, a new virtual machine was created in VirtualBox to act as the client machine within the lab. The system was configured with 4GB of RAM, 2 CPUs, and a 50GB virtual disk. The ISO was mounted, and the operating system was installed following the standard installation process.
+
+### *Setting up the attacker machine (Kali Linux)*
+
+A pre-configured Kali Linux VirtualBox image was downloaded and extracted. The virtual machine was then imported directly into VirtualBox, allowing for a faster deployment. This machine is used as the attacker system throughout the project and is responsible for performing enumeration and exploitation tasks in later stages.
 
 ### *Part 1 - Summary*
 
-At this point, the lab environment has been successfully initialized. The setup includes a Windows Server machine, a Windows 10 client machine, and a Kali Linux attacker machine. All systems are installed and operational, forming the foundation for the next stages of configuration and security testing.
+At this stage, the lab environment consists of three fully operational virtual machines: a Windows Server 2022 system configured to become the domain controller, a Windows 10 client machine, and a Kali Linux attacker machine. All systems have been successfully installed and are ready for network configuration and domain setup.
+
 
 ## Steps - Part 2
 
@@ -38,9 +39,11 @@ Connectivity tests were performed to verify that the machines could successfully
 
 ### *Promoting the server to domain controller*
 
-The Windows Server machine was configured as the domain controller by installing Active Directory Domain Services. During this process, a new domain named `corp.local` was created.
+The Windows Server machine (DC01) was configured as the domain controller by installing Active Directory Domain Services.
 
-This step established the central authentication system for the lab environment.
+During the setup process, a new domain named `corp.local` was created, establishing the central identity and authentication system for the lab.
+
+The server was promoted successfully, and domain services were verified to ensure proper functionality.
 
 ### *Creating domain users*
 
