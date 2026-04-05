@@ -86,3 +86,58 @@ This validation demonstrated that the client machine was fully integrated into t
 ### *Part 3 - Summary*
 
 At this stage, the Windows 10 client machine has been successfully integrated into the domain environment. Network configuration, domain join, and user authentication have all been validated, resulting in a functional enterprise-style setup ready for further security testing.
+
+## Steps - Part 4
+
+### *Enumerating SMB Shares*
+
+After confirming connectivity between the attacker machine (Kali Linux) and the Domain Controller, an SMB enumeration was performed using valid domain credentials.
+
+The following command was used:
+
+smbclient -L //192.168.56.10 -U testuser
+
+Authentication was successful, confirming that the created domain user credentials were valid.
+
+The enumeration revealed several important shared resources:
+
+- ADMIN$
+- C$
+- IPC$
+- NETLOGON
+- SYSVOL
+
+The presence of SYSVOL and NETLOGON shares confirmed that the target system is functioning as a Domain Controller within the Active Directory environment.
+
+Additionally, SMBv1 was found to be disabled, indicating a more secure and modern configuration of the SMB protocol.
+
+This step marked the first successful authenticated interaction with the Domain Controller from the attacker machine.
+
+### *Enumerating Domain Users*
+
+After successfully authenticating to the Domain Controller using SMB, further enumeration was performed using RPC.
+
+The following command was executed:
+
+rpcclient -U testuser 192.168.56.10
+
+Once authenticated, domain users were enumerated using:
+
+enumdomusers
+
+The results revealed multiple domain accounts, including:
+
+- Administrator
+- Guest
+- krbtgt
+- john.doe
+- mary.smith
+- backup_user
+- it.support
+- testuser
+
+The presence of these accounts confirmed successful interaction with the Active Directory environment and provided valuable targets for further security testing.
+
+Particularly, privileged and service accounts such as "Administrator" and "krbtgt" were identified, which are critical components in many Active Directory attack scenarios.
+
+This step represents a key phase in Active Directory enumeration, enabling further attack paths such as password attacks and privilege escalation.
