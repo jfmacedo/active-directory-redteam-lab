@@ -60,3 +60,29 @@ A test user account was also prepared to validate domain authentication from cli
 ### *Part 2 - Summary*
 
 At this stage, the internal network has been fully configured, and all machines are successfully connected. Active Directory Domain Services have been installed, the server has been promoted to a domain controller, and the `corp.local` domain is operational. User accounts have been created, and the environment is now ready for client integration and further security testing.
+
+## Steps - Part 3
+
+### *Configuring the client machine*
+
+The Windows 10 client machine was configured to operate within the same internal network as the domain controller. A static IP address (192.168.56.20) was assigned, using the same subnet (255.255.255.0) as the rest of the environment to ensure proper communication.
+
+The DNS server was configured to point to the domain controller (192.168.56.10), allowing the client machine to resolve domain services correctly and communicate with Active Directory.
+
+These configurations ensured that the client machine was correctly integrated into the lab network and capable of interacting with the domain environment.
+
+### *Joining the domain*
+
+After confirming network configuration, the client machine was joined to the `corp.local` domain. This step integrated the workstation into the domain infrastructure, allowing centralized authentication through the domain controller.
+
+The domain join process completed successfully, confirming proper communication between the client machine and the domain controller.
+
+### *Validating domain authentication*
+
+Authentication was tested using a domain user account created in Active Directory (`testuser`). The login was performed using the domain format (e.g., `corp\testuser`), confirming that domain authentication was working as expected.
+
+This validation demonstrated that the client machine was fully integrated into the domain and that authentication requests were being handled correctly by the domain controller.
+
+### *Part 3 - Summary*
+
+At this stage, the Windows 10 client machine has been successfully integrated into the domain environment. Network configuration, domain join, and user authentication have all been validated, resulting in a functional enterprise-style setup ready for further security testing.
