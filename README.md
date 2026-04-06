@@ -174,3 +174,30 @@ These findings provided valuable insight into the domain’s security posture an
 ## Summary
 
 This phase confirmed successful authenticated enumeration of the Active Directory environment. It provided a clear understanding of domain structure, user privileges, and security configurations, forming a strong foundation for further attack techniques such as privilege escalation and lateral movement.
+
+## Brute Force Attack (RDP)
+
+Following the enumeration and analysis phases, a brute force attack was conducted against the Remote Desktop Protocol (RDP) service on the target machine.
+Using the previously identified domain user `testuser`, the attack was performed from the Kali Linux attacker machine with the tool **Crowbar**.
+
+An initial attempt was made using a small subset of passwords extracted from the `rockyou.txt` wordlist:
+```bash
+head -n 20 rockyou.txt > passwords.txt
+```
+This attempt did not produce any valid credentials, indicating that the correct password was not included in the limited dataset.
+
+To increase effectiveness, the full wordlist was used. However, an encoding issue was encountered due to invalid characters within the file. To resolve this, the wordlist was cleaned using:
+```bash
+tr -cd '\11\12\15\40-\176' < rockyou.txt > clean.txt
+```
+This ensured compatibility with the tool and allowed the attack to proceed without errors.
+
+The brute force attack was then executed using:
+```bash
+crowbar -b rdp -u testuser -C clean.txt -s 192.168.10.200/32
+```
+During execution, multiple authentication attempts were made against the RDP service (port 3389), simulating a real-world password attack scenario.
+
+Although no valid credentials were immediately identified, this phase demonstrated how attackers adapt their approach, troubleshoot technical issues, and refine attack strategies.
+
+This exercise highlights the importance of strong password policies, restricted access to RDP services, and proper defensive configurations to mitigate brute force attacks.
