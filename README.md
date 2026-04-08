@@ -26,7 +26,7 @@ This lab aims to demonstrate a hands-on experience in an Active Directory attack
 - Understanding authentication failures and account lockout behavior.  
 - Using BloodHound for attack path analysis (partial setup).  
 - Documenting offensive security workflows in a structured way.
-  
+
 ## 1. Lab Setup
 
 ### *Setting up the virtual environment*
@@ -35,7 +35,7 @@ The lab environment was built using Oracle VM VirtualBox, which was installed us
 
 ### *Preparing the Windows Server machine*
 
-Download Windowns Server 2022 ISO from https://www.microsoft.com/en-us/evalcenter/evaluate-windows-server-2022 after that it was used to create a dedicated virtual machine that acts as the domain controller (DC01). The system was configured with 4GB of RAM, 2 CPUs, and a 50GB virtual disk. During installation, the Desktop Experience version was selected to simplify interaction with the system. Initial configuration was completed, including setting the administrator credentials.
+Download Windows Server 2022 ISO from https://www.microsoft.com/en-us/evalcenter/evaluate-windows-server-2022 after that it was used to create a dedicated virtual machine that acts as the domain controller (DC01). The system was configured with 4GB of RAM, 2 CPUs, and a 50GB virtual disk. During installation, the Desktop Experience version was selected to simplify interaction with the system. Initial configuration was completed, including setting the administrator credentials.
 
 ### *Preparing the Windows 10 machine*
 
@@ -290,32 +290,6 @@ Possible causes include:
 This demonstrates how defensive mechanisms within Active Directory environments can react to brute force or password spraying attacks.
 
 Understanding these responses is essential for both attackers and defenders, as it highlights the importance of monitoring, detection, and response strategies in enterprise environments.
-
-## Password Spraying Behavior and System Response
-
-During further password spraying attempts using CrackMapExec, different system responses were observed.
-
-Initial attempts using common passwords such as `Password123` resulted in authentication failures:
-
-- STATUS_LOGON_FAILURE indicated incorrect credentials
-
-However, subsequent attempts triggered a different behavior:
-
-- Connection reset by peer
-
-This response suggests that the target system detected suspicious authentication activity and actively terminated the connection.
-
-Possible causes include:
-
-- Account lockout policies
-- Intrusion detection mechanisms
-- SMB service protections
-- Firewall rules blocking repeated authentication attempts
-
-This demonstrates how defensive mechanisms within Active Directory environments can react to brute force or password spraying attacks.
-
-Understanding these responses is essential for both attackers and defenders, as it highlights the importance of monitoring, detection, and response strategies in enterprise environments.
-
 
 ## References
 
