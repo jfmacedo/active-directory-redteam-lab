@@ -47,6 +47,12 @@ To ensure stable and predictable communication, static IP addressing was applied
 The DNS configuration on the client machines was set to point to the domain controller, allowing proper name resolution within the domain environment.
 
 Connectivity between machines was tested to confirm that the network configuration was functioning correctly.
+Additionally, the Kali Linux machine was configured with two network adapters to support both internet access and internal lab communication.
+
+- **Adapter 1 (NAT):** Provided internet connectivity, allowing the system to download updates and install required security tools.
+- **Adapter 2 (Host-Only):** Enabled communication with the isolated internal lab network (192.168.56.0/24), facilitating interaction with the domain controller and client machine.
+
+This dual-adapter configuration ensured that the attacker machine remained up to date while maintaining a secure and isolated environment for penetration testing activities.
 
 ### *Installing Active Directory Domain Services*
 
