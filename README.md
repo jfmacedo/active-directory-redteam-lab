@@ -1,12 +1,32 @@
 # Active Directory Red Team Lab
 
-# 🛡️ Active Directory Red Team Lab
+# Active Directory Red Team Lab
 
 ## This project demonstrates the creation of a controlled Active Directory lab using VirtualBox, consisting of a Windows Server 2022 domain controller, a Windows 10 client, and a Kali Linux attacker machine. The lab focuses on key attack phases, including enumeration, password attacks, and initial analysis using tools such as smbclient, rpcclient, crackmapexec, crowbar, and BloodHound. It provides hands-on experience with Active Directory environments, authentication mechanisms, and common red team techniques.
 
 ![Lab Architecture](images/lab-architecture.jpeg)
 *Figure 1: Active Directory Lab Architecture*
 
+## Objective
+
+This lab aims to demonstrate a hands-on experience in an Active Directory attack within a controlled and isolated network. The project simulates a real-world configuration where offensive security techniques can be safely practiced. The lab covers network configuration, domain structure, authentication mechanisms, and common attack techniques such as enumeration, brute force, and password scarcity. Overall, the goal is to develop practical cybersecurity skills while gaining a deeper understanding of how attacks are carried out and how Active Directory environments can be exploited from an attacker's perspective.
+
+## Skills Learned
+
+- Setting up virtual machines using Oracle VM VirtualBox.  
+- Configuring isolated networks (Host-Only + NAT).  
+- Assigning static IP addresses and troubleshooting connectivity.  
+- Installing and configuring Active Directory Domain Services (AD DS).  
+- Promoting a Windows Server to a Domain Controller.  
+- Joining a Windows 10 client to a domain.  
+- Creating and managing domain users.  
+- Enumerating SMB shares and domain users (`rpcclient`, `smbclient`).  
+- Performing brute force attacks (`Crowbar` - RDP).  
+- Performing password spraying attacks (`CrackMapExec` - SMB).  
+- Understanding authentication failures and account lockout behavior.  
+- Using BloodHound for attack path analysis (partial setup).  
+- Documenting offensive security workflows in a structured way.
+  
 ## 1. Lab Setup
 
 ### *Setting up the virtual environment*
