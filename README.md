@@ -20,6 +20,17 @@ The Windows 10 installation media was obtained through Microsoft’s official we
 
 A pre-configured Kali Linux VirtualBox image was downloaded and extracted. The virtual machine was then imported directly into VirtualBox, allowing for a faster deployment. This machine is used as the attacker system throughout the project and is responsible for performing enumeration and exploitation tasks in later stages.
 
+## Lab Architecture Overview
+
+| Component               | Role / Function                                                                 | Where it Runs        |
+|------------------------|----------------------------------------------------------------------------------|----------------------|
+| Attacker Machine       | Kali Linux used for reconnaissance, enumeration, and attack execution           | VirtualBox VM        |
+| Domain Controller      | Windows Server 2022 running Active Directory, DNS, SMB, SYSVOL, NETLOGON        | VirtualBox VM        |
+| Client Machine         | Windows 10 domain-joined workstation used as lateral movement target            | VirtualBox VM        |
+| Isolated Network       | Host-only network (192.168.56.0/24) for secure communication between machines   | VirtualBox Network   |
+| Attack Tools           | rpcclient, smbclient, crackmapexec, crowbar, BloodHound                         | Kali Linux           |
+| Authentication Methods | SMB, RDP, Kerberos                                                              | Across all machines  |
+
 ### *Part 1 - Summary*
 
 At this stage, the lab environment consists of three fully operational virtual machines: a Windows Server 2022 system configured to become the domain controller, a Windows 10 client machine, and a Kali Linux attacker machine. All systems have been successfully installed and are ready for network configuration and domain setup.
@@ -201,3 +212,53 @@ During execution, multiple authentication attempts were made against the RDP ser
 Although no valid credentials were immediately identified, this phase demonstrated how attackers adapt their approach, troubleshoot technical issues, and refine attack strategies.
 
 This exercise highlights the importance of strong password policies, restricted access to RDP services, and proper defensive configurations to mitigate brute force attacks.
+
+## Password Spraying Behavior and System Response
+
+During further password spraying attempts using CrackMapExec, different system responses were observed.
+
+Initial attempts using common passwords such as `Password123` resulted in authentication failures:
+
+- STATUS_LOGON_FAILURE indicated incorrect credentials
+
+However, subsequent attempts triggered a different behavior:
+
+- Connection reset by peer
+
+This response suggests that the target system detected suspicious authentication activity and actively terminated the connection.
+
+Possible causes include:
+
+- Account lockout policies
+- Intrusion detection mechanisms
+- SMB service protections
+- Firewall rules blocking repeated authentication attempts
+
+This demonstrates how defensive mechanisms within Active Directory environments can react to brute force or password spraying attacks.
+
+Understanding these responses is essential for both attackers and defenders, as it highlights the importance of monitoring, detection, and response strategies in enterprise environments.
+
+## Password Spraying Behavior and System Response
+
+During further password spraying attempts using CrackMapExec, different system responses were observed.
+
+Initial attempts using common passwords such as `Password123` resulted in authentication failures:
+
+- STATUS_LOGON_FAILURE indicated incorrect credentials
+
+However, subsequent attempts triggered a different behavior:
+
+- Connection reset by peer
+
+This response suggests that the target system detected suspicious authentication activity and actively terminated the connection.
+
+Possible causes include:
+
+- Account lockout policies
+- Intrusion detection mechanisms
+- SMB service protections
+- Firewall rules blocking repeated authentication attempts
+
+This demonstrates how defensive mechanisms within Active Directory environments can react to brute force or password spraying attacks.
+
+Understanding these responses is essential for both attackers and defenders, as it highlights the importance of monitoring, detection, and response strategies in enterprise environments.
