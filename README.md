@@ -1,8 +1,6 @@
 # Active Directory Red Team Lab
 
-[wip]
-
-## Steps - Part 1
+## 1. Lab Setup
 
 ### *Setting up the virtual environment*
 
@@ -36,7 +34,7 @@ Get Kali Linux from https://www.kali.org/. A pre-configured Kali Linux VirtualBo
 At this stage, the lab environment consists of three fully operational virtual machines: a Windows Server 2022 system configured to become the domain controller, a Windows 10 client machine, and a Kali Linux attacker machine. All systems have been successfully installed and are ready for network configuration and domain setup.
 
 
-## Steps - Part 2
+## 2. Network Configuration
 
 ### *Configuring network settings*
 
@@ -53,6 +51,8 @@ Additionally, the Kali Linux machine was configured with two network adapters to
 - **Adapter 2 (Host-Only):** Enabled communication with the isolated internal lab network (192.168.56.0/24), facilitating interaction with the domain controller and client machine.
 
 This dual-adapter configuration ensured that the attacker machine remained up to date while maintaining a secure and isolated environment for penetration testing activities.
+
+## 3. Active Directory Deployment
 
 ### *Installing Active Directory Domain Services*
 
@@ -75,7 +75,7 @@ A test user account was also prepared to validate domain authentication from cli
 
 At this stage, the internal network has been fully configured, and all machines are successfully connected. Active Directory Domain Services have been installed, the server has been promoted to a domain controller, and the `corp.local` domain is operational. User accounts have been created, and the environment is now ready for client integration and further security testing.
 
-## Steps - Part 3
+## 4. Domain Join and Authentication
 
 ### *Configuring the client machine*
 
@@ -101,7 +101,7 @@ This validation demonstrated that the client machine was fully integrated into t
 
 At this stage, the Windows 10 client machine has been successfully integrated into the domain environment. Network configuration, domain join, and user authentication have all been validated, resulting in a functional enterprise-style setup ready for further security testing.
 
-## Steps - Part 4
+## 5. Enumeration
 
 ### *Enumerating SMB Shares*
 
@@ -192,6 +192,8 @@ These findings provided valuable insight into the domain’s security posture an
 
 This phase confirmed successful authenticated enumeration of the Active Directory environment. It provided a clear understanding of domain structure, user privileges, and security configurations, forming a strong foundation for further attack techniques such as privilege escalation and lateral movement.
 
+## 6. BloodHound
+
 ## BloodHound Enumeration (Attempt)
 
 BloodHound was introduced in this lab to analyze relationships within the Active Directory environment and identify potential attack paths.
@@ -207,6 +209,8 @@ Despite this limitation, the process provided valuable insight into the operatio
 - The ability of BloodHound to map privilege relationships and identify potential attack paths  
 
 This step highlighted the complexity involved in Active Directory enumeration and emphasized the importance of correct configuration when using advanced security tools. The activity will be revisited in future iterations of the lab to achieve full data collection and analysis.
+
+## 7. Password Attacks
 
 ## Brute Force Attack (RDP)
 
@@ -284,3 +288,26 @@ Possible causes include:
 This demonstrates how defensive mechanisms within Active Directory environments can react to brute force or password spraying attacks.
 
 Understanding these responses is essential for both attackers and defenders, as it highlights the importance of monitoring, detection, and response strategies in enterprise environments.
+
+
+## References
+
+- Microsoft (2024) *Windows Server 2022 Documentation*. Available at: https://learn.microsoft.com/en-us/windows-server/ 
+
+- Microsoft (2024) *Active Directory Domain Services Overview*. Available at: https://learn.microsoft.com/en-us/windows-server/identity/ad-ds/get-started/virtual-dc/active-directory-domain-services-overview
+
+- Kali Linux (2024) *Official Documentation*. Available at: https://www.kali.org/docs/ 
+
+- Oracle (2024) *VirtualBox Documentation*. Available at: https://www.virtualbox.org/wiki/Documentation 
+
+- BloodHound (2024) *Documentation*. Available at: https://bloodhound.readthedocs.io/
+
+- Neo4j (2024) *Documentation*. Available at: https://neo4j.com/docs/ 
+
+- byt3bl33d3r (2024) *CrackMapExec*. Available at: https://github.com/byt3bl33d3r/CrackMapExec 
+
+- galkan (2024) *Crowbar Tool*. Available at: https://github.com/galkan/crowbar 
+
+- MITRE (2024) *ATT&CK Framework*. Available at: https://attack.mitre.org/ 
+
+- MyDFIR (2024) *YouTube Channel*. Available at: https://www.youtube.com/@MyDFIR
