@@ -1,5 +1,12 @@
 # Active Directory Red Team Lab
 
+# 🛡️ Active Directory Red Team Lab
+
+## This project demonstrates the creation of a controlled Active Directory lab using VirtualBox, consisting of a Windows Server 2022 domain controller, a Windows 10 client, and a Kali Linux attacker machine. The lab focuses on key attack phases, including enumeration, password attacks, and initial analysis using tools such as smbclient, rpcclient, crackmapexec, crowbar, and BloodHound. It provides hands-on experience with Active Directory environments, authentication mechanisms, and common red team techniques.
+
+![Lab Architecture](images/lab-architecture.jpeg)
+*Figure 1: Active Directory Lab Architecture*
+
 ## 1. Lab Setup
 
 ### *Setting up the virtual environment*
@@ -29,7 +36,7 @@ Get Kali Linux from https://www.kali.org/. A pre-configured Kali Linux VirtualBo
 | Attack Tools           | rpcclient, smbclient, crackmapexec, crowbar, BloodHound                         | Kali Linux           |
 | Authentication Methods | SMB, RDP, Kerberos                                                              | Across all machines  |
 
-### *Part 1 - Summary*
+### *Summary*
 
 At this stage, the lab environment consists of three fully operational virtual machines: a Windows Server 2022 system configured to become the domain controller, a Windows 10 client machine, and a Kali Linux attacker machine. All systems have been successfully installed and are ready for network configuration and domain setup.
 
@@ -71,7 +78,7 @@ The promotion process was completed successfully, and the domain services were v
 With Active Directory in place, multiple users were created to simulate a realistic enterprise environment. These accounts will later be used for authentication and enumeration testing.
 A test user account was also prepared to validate domain authentication from client machines.
 
-### *Part 2 - Summary*
+### *Summary*
 
 At this stage, the internal network has been fully configured, and all machines are successfully connected. Active Directory Domain Services have been installed, the server has been promoted to a domain controller, and the `corp.local` domain is operational. User accounts have been created, and the environment is now ready for client integration and further security testing.
 
@@ -97,7 +104,7 @@ Authentication was tested using a domain user account created in Active Director
 
 This validation demonstrated that the client machine was fully integrated into the domain and that authentication requests were being handled correctly by the domain controller.
 
-### *Part 3 - Summary*
+### *Summary*
 
 At this stage, the Windows 10 client machine has been successfully integrated into the domain environment. Network configuration, domain join, and user authentication have all been validated, resulting in a functional enterprise-style setup ready for further security testing.
 
@@ -188,7 +195,7 @@ A key file identified during this process was “GptTmpl.inf”, which contains 
 
 These findings provided valuable insight into the domain’s security posture and highlighted potential opportunities for privilege escalation.
 
-## Summary
+### *Summary*
 
 This phase confirmed successful authenticated enumeration of the Active Directory environment. It provided a clear understanding of domain structure, user privileges, and security configurations, forming a strong foundation for further attack techniques such as privilege escalation and lateral movement.
 
