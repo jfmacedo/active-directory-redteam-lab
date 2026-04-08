@@ -192,6 +192,22 @@ These findings provided valuable insight into the domain’s security posture an
 
 This phase confirmed successful authenticated enumeration of the Active Directory environment. It provided a clear understanding of domain structure, user privileges, and security configurations, forming a strong foundation for further attack techniques such as privilege escalation and lateral movement.
 
+## BloodHound Enumeration (Attempt)
+
+BloodHound was introduced in this lab to analyze relationships within the Active Directory environment and identify potential attack paths.
+
+The tool was successfully installed and configured on the Kali Linux machine, including the setup of Neo4j as the backend graph database. The Neo4j service was initialized correctly, and access to the web interface (`http://localhost:7474`) was verified.
+
+An attempt was made to collect domain data using BloodHound; however, full data ingestion was not completed due to configuration and connectivity limitations within the lab environment.
+
+Despite this limitation, the process provided valuable insight into the operation of BloodHound, including:
+
+- The role of Neo4j in storing and managing graph-based relationship data  
+- The requirement for proper domain authentication and network connectivity  
+- The ability of BloodHound to map privilege relationships and identify potential attack paths  
+
+This step highlighted the complexity involved in Active Directory enumeration and emphasized the importance of correct configuration when using advanced security tools. The activity will be revisited in future iterations of the lab to achieve full data collection and analysis.
+
 ## Brute Force Attack (RDP)
 
 Following the enumeration and analysis phases, a brute force attack was conducted against the Remote Desktop Protocol (RDP) service on the target machine.
