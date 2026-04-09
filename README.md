@@ -161,7 +161,7 @@ After successfully authenticating to the Domain Controller using SMB, further en
 The following command was executed:
 
 ```bash
-rpcclient -U testuser 192.168.56.10
+rpcclient -U 'corp.local\testuser' 192.168.56.10
 ```
 
 Once authenticated, domain users were enumerated using:
